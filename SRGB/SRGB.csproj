@@ -45,6 +45,9 @@
         <Reference Include="UnityEngine.CoreModule">
             <HintPath>$(GameDir)/SpinRhythm_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
         </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+            <HintPath>$(GameDir)/SpinRhythm_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+        </Reference>
         <Reference Include="UnityEngine">
             <HintPath>$(GameDir)/SpinRhythm_Data/Managed/UnityEngine.dll</HintPath>
         </Reference>

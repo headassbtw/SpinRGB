@@ -3,6 +3,7 @@ using OpenRGB.NET;
 using OpenRGB.NET.Enums;
 using OpenRGB.NET.Models;
 using SRGB.TypeConversion;
+using SRGB.UI;
 
 namespace SRGB.OpenRGB;
 
@@ -30,6 +31,7 @@ public class Client
             .Select(i => colors[i].FromUnity())
             .ToArray();
         RGBClient.UpdateLeds(_kbIdx, leds);
+        
         return true;
     }
     internal bool SetKeyboard(UnityEngine.Color color)
@@ -39,6 +41,7 @@ public class Client
         var leds = Enumerable.Range(0, _keyboard.Colors.Length)
             .Select(i => ORGBCol)
             .ToArray();
+        
         RGBClient.UpdateLeds(_kbIdx, leds);
         return true;
     }
@@ -51,6 +54,7 @@ public class Client
             Plugin.Log.LogInfo("OpenRGB Devices:");
         else
             return false;
+        
         for (int i = 0; i < devices.Length; i++)
         {
             Plugin.Log.LogInfo("");

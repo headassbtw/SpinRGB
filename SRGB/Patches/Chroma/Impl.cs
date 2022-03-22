@@ -29,14 +29,15 @@ public class Impl
     }
     [HarmonyPatch(typeof(RazerChroma),nameof(RazerChroma.SetAmbientLighting))]
     [HarmonyPrefix]
-    static bool SetAmbient(Color color,ref float __lastSetAmbient)
+    static bool SetAmbient(Color color,ref float ___lastSetAmbient)
     {
-        if (Time.unscaledTime < __lastSetAmbient + 0.033333335f)
+        
+        if (Time.unscaledTime < ___lastSetAmbient + 0.033333335f)
         {
             return false;
         }
 
-        __lastSetAmbient = Time.unscaledTime;
+        ___lastSetAmbient = Time.unscaledTime;
         
         Color[] Colors = new Color[Plugin.RClientInterface.KeyboardLEDs];
 
@@ -45,16 +46,16 @@ public class Impl
     }
     [HarmonyPatch(typeof(RazerChroma),"GetColors")]
     [HarmonyPrefix]
-    static int[] GetColors()
+    static bool GetColors(ref int[] __result)
     {
         int[] array = new int[Plugin.RClientInterface.KeyboardLEDs];
         for (int i = 0; i < array.Length; i++)
         {
             array[i] = 0;
         }
-        
-        
-        return array;
+
+        __result = array;
+        return false;
     }
 
     private static GameObject _rgb;
