@@ -18,12 +18,7 @@ public class Stubs
         return false;
     }
     
-    [HarmonyPatch(typeof(RazerChroma),"GetColors")]
-    [HarmonyPrefix]
-    static bool StubColor()
-    {
-        return false;
-    }
+    
     
     
     [HarmonyPatch(typeof(RazerChroma),nameof(RazerChroma.StopRgbAnimation))]
@@ -47,13 +42,6 @@ public class Stubs
     [HarmonyPatch(typeof(RazerChroma),"UpdateCurrentAnimation")]
     [HarmonyPrefix]
     static bool StubUpdateCurrent()
-    {
-        return false;
-    }
-    
-    [HarmonyPatch(typeof(RazerChroma),nameof(RazerChroma.SetRgbFromColors))]
-    [HarmonyPrefix]
-    static bool StubSetFromColors()
     {
         return false;
     }

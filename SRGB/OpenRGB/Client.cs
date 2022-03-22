@@ -9,9 +9,9 @@ namespace SRGB.OpenRGB;
 public class Client
 {
     private OpenRGBClient RGBClient;
-    private int KeyboardWidth;
     public int KeyboardLEDs { get; private set; }
-    private int KeyboardHeight = 6;
+    public int? KeyboardHeight { get; private set; } = 6;
+    public int? KeyboardWidth { get; private set; }
     private bool HasKeyboard;
     private Device _keyboard;
     private int _kbIdx;
@@ -61,7 +61,7 @@ public class Client
             
             if (devices[i].Type == DeviceType.Keyboard)
             {
-                KeyboardWidth = devices[i].Leds.Length / 6;
+                KeyboardWidth = devices[i].Leds.Length / KeyboardHeight;
                 KeyboardLEDs = devices[i].Leds.Length;
                 _keyboard = devices[i];
                 _kbIdx = i;

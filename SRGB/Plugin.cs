@@ -25,8 +25,9 @@ namespace SRGB
             Log = base.Logger;
             RClientInterface = new Client("Spin Rhythm XD");
             var harmony = new Harmony("SRGB");
-            harmony.PatchAll(typeof(Patches.Chroma.Stubs));
             harmony.PatchAll(typeof(Patches.Chroma.Init));
+            harmony.PatchAll(typeof(Patches.Chroma.Impl));
+            harmony.PatchAll(typeof(Patches.Chroma.Stubs));
             DemoUI.CreateUI();
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
