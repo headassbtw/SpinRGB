@@ -11,12 +11,7 @@ public class Stubs
         return false;
     }
     
-    [HarmonyPatch(typeof(RazerChroma),nameof(RazerChroma.PlayRgb))]
-    [HarmonyPrefix]
-    static bool StubPlay()
-    {
-        return false;
-    }
+    
     
     
     
