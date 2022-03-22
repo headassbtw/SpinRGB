@@ -2,7 +2,7 @@ using HarmonyLib;
 
 namespace SRGB.Patches.Chroma;
 
-public class Stubs
+public class Stubs //for funcs that i don't want to run, or don't have an OpenRGB translation
 {
     [HarmonyPatch(typeof(RazerChroma),nameof(RazerChroma.PlayRgbAnimation))]
     [HarmonyPrefix]

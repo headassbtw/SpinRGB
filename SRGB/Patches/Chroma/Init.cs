@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SRGB.Patches.Chroma;
 
-public class Init
+public class Init //Init stuff
 {
     [HarmonyPatch(typeof(RazerChroma),nameof(RazerChroma.InitService))]
     [HarmonyPrefix]

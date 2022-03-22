@@ -9,7 +9,7 @@ internal class Fader : MonoBehaviour
     
 }
 
-public class Impl
+public class Impl //for actual lighting changes
 {
     private static Fader _fader;
     [HarmonyPatch(typeof(RazerChroma),nameof(RazerChroma.HighlightKey))]
