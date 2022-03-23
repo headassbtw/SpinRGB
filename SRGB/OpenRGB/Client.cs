@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Runtime.InteropServices;
 using OpenRGB.NET;
 using OpenRGB.NET.Enums;
 using OpenRGB.NET.Models;
@@ -26,7 +27,6 @@ public class Client
     internal bool SetKeyboard(UnityEngine.Color[] colors)
     {
         if (!HasKeyboard) return false;
-        
         var leds = Enumerable.Range(0, _keyboard.Colors.Length)
             .Select(i => colors[i].FromUnity())
             .ToArray();

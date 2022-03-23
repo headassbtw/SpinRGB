@@ -4,7 +4,7 @@
         <TargetFramework>net472</TargetFramework>
         <AssemblyName>SRGB</AssemblyName>
         <Description>an OpenRGB plugin for Spin Rhythm XD</Description>
-        <Version>1.0.0</Version>
+        <Version>0.0.1</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
@@ -53,7 +53,7 @@
         </Reference>
     </ItemGroup>
     <PropertyGroup>
-        <PostBuildEvent>cp "/home/headass/RiderProjects/SRGB/SRGB/bin/Debug/net472/SRGB.dll" "/home/headass/steam/steamapps/common/Spin Rhythm/BepInEx/plugins/"</PostBuildEvent>
+        <PostBuildEvent>cp "/home/headass/RiderProjects/SpinRGB/SRGB/bin/Debug/net472/SRGB.dll" "/home/headass/steam/steamapps/common/Spin Rhythm/BepInEx/plugins/"</PostBuildEvent>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">

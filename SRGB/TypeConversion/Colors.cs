@@ -11,4 +11,14 @@ public static class Colors
                              (byte) ((int)col.b*255));
         return rtn;
     }
+    public static UnityEngine.Color ToUnity(this Color col)
+    {
+
+        UnityEngine.Color rtn = new UnityEngine.Color(
+             ((float) col.R / 255),
+             ((float) col.G / 255),
+             ((float) col.B / 255)); 
+            
+        return rtn;
+    }
 }

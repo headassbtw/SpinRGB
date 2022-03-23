@@ -1,17 +1,14 @@
 using System.Collections;
 using HarmonyLib;
+using SRGB.Backend;
 using UnityEngine;
 
 namespace SRGB.Patches.Chroma;
 
-internal class Fader : MonoBehaviour
-{
-    
-}
 
 public class Impl //for actual lighting changes
 {
-    private static Fader _fader;
+    
     [HarmonyPatch(typeof(RazerChroma),nameof(RazerChroma.HighlightKey))]
     [HarmonyPrefix]
     static bool HighlightChamp(KeyCode key, Color color)
@@ -48,34 +45,19 @@ public class Impl //for actual lighting changes
     [HarmonyPrefix]
     static bool GetColors(ref int[] __result)
     {
+        Plugin.Log.LogDebug("Colors getting got");
         int[] array = new int[Plugin.RClientInterface.KeyboardLEDs];
+        
         for (int i = 0; i < array.Length; i++)
         {
-            array[i] = 0;
+            array[i] = i;
         }
 
         __result = array;
         return false;
     }
 
-    private static GameObject _rgb;
-    private static GameObject RgbRT
-    {
-        get
-        {
-            if (_rgb != null)
-            {
-                return _rgb;
-            }
-            else
-            {
-                _rgb = GameObject.Find("RgbRT");
-                _fader = _rgb.AddComponent<Fader>();
-            }
-
-            return _rgb;
-        }
-    }
+    
 
     static IEnumerator Fade(Color startColor, Color endColor, int frames, float frameDuration, bool looping = false)
     {
@@ -89,7 +71,8 @@ public class Impl //for actual lighting changes
     [HarmonyPrefix]
     static bool RgbFade(string name, Color startColor, Color endColor, int frames, float frameDuration, bool looping = false)
     {
-        _fader.StartCoroutine(Fade(startColor,endColor,frames,frameDuration,looping));
+        Plugin.Log.LogDebug("Hitting the fade");
+        FaderManager.fader.StartCoroutine(Fade(startColor,endColor,frames,frameDuration,looping));
         return false;
     }
 }
